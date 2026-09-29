@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marca y creación de contenido para emprendedores | Evlyn Meza</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPink: '#ff006e',
+                        brandGreen: '#ccff09',
+                        brandBlue: '#354393',
+                        brandBlueDark: '#232d66',
+                        brandBlueLight: '#eef1ff',
+                        paperBg: '#fbfbfe',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'notebook': '6px 6px 0px #354393',
+                        'notebook-pink': '6px 6px 0px #ff006e',
+                        'notebook-green': '6px 6px 0px #ccff09',
+                        'notebook-hover': '10px 10px 0px #354393',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .bg-grid-pattern {
+            background-size: 24px 24px;
+            background-image: 
+                linear-gradient(to right, rgba(53, 67, 147, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(53, 67, 147, 0.07) 1px, transparent 1px);
+        }
+        .btn-pink-to-green {
+            background-color: #ff006e;
+            color: #ffffff;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-pink-to-green:hover {
+            background-color: #ccff09;
+            color: #354393;
+        }
+        .btn-pink-to-green:hover i {
+            color: #354393 !important;
+        }
+    </style>
+</head>
+<body class="bg-paperBg text-brandBlue font-sans antialiased overflow-x-hidden selection:bg-brandGreen selection:text-brandBlue">
+
+    <div id="sticky-timer-bar" class="fixed top-0 left-0 right-0 z-50 bg-brandPink text-white py-2 px-4 shadow-md font-bold text-sm sm:text-base">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2.5 h-2.5 rounded-full bg-brandGreen animate-ping"></span>
+                <span class="uppercase tracking-wider font-extrabold text-brandGreen">¡ÚLTIMOS CUPOS DISPONIBLES!</span>
+                <span class="hidden md:inline">| Descuento especial de lanzamiento activo</span>
+            </div>
+            <div class="flex items-center gap-2 bg-brandBlue text-white px-3 py-1 rounded-full text-xs sm:text-sm font-mono border border-brandGreen">
+                <i class="fa-regular fa-clock text-brandGreen"></i>
+                <span>La oferta expira en:</span>
+                <span id="countdown-timer" class="text-brandGreen font-bold text-base">15:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="pt-14 sm:pt-12">
+
+        <section class="relative bg-grid-pattern pt-10 pb-16 px-4 sm:px-6 lg:px-8 border-b-4 border-brandBlue overflow-hidden">
+            <div class="max-w-5xl mx-auto text-center">
+
+                <!-- Headline -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-brandBlue tracking-tight leading-tight max-w-4xl mx-auto mb-6">
+                    ¿Te sientas a crear contenido para tu negocio y <span class="text-brandPink underline decoration-brandGreen decoration-4">no sabes por dónde empezar?</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-lg sm:text-xl text-brandBlue/90 max-w-3xl mx-auto mb-8 font-medium leading-relaxed">
+                    Lo que te falta es definir la <strong class="text-brandPink">base estratégica de tu marca</strong> antes de publicar.
+                </p>
+
+                <!-- VSL Video Container -->
+                <div class="relative max-w-3xl mx-auto mb-10">
+                    <div class="bg-white p-3 sm:p-4 rounded-3xl border-3 border-brandBlue shadow-notebook-pink">
+                        <div class="relative aspect-video bg-brandBlue rounded-2xl overflow-hidden border-2 border-brandBlue group" id="vsl-player">
+                            <!-- HTML5 Video element pointing to ../resources/VSL.mp4 -->
+                            <video id="vsl-video" class="w-full h-full object-cover rounded-2xl" controls preload="metadata">
+                                <source src="../resources/VSL.mp4" type="video/mp4">
+                                Tu navegador no soporta la reproducción de este video.
+                            </video>
+                            
+                            <!-- Custom interactive overlay cover -->
+                            <div id="vsl-overlay" class="absolute inset-0 bg-brandBlue bg-opacity-90 flex flex-col justify-between p-6 text-left cursor-pointer transition-opacity duration-300 z-10" onclick="playVslVideo()">
+                                <div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80');"></div>
+                                
+                                <div class="relative z-10 flex justify-end items-start">
+                                    <span class="bg-brandGreen text-brandBlue font-bold text-xs px-2.5 py-1 rounded-full border border-brandBlue">
+                                        HD 1080p
+                                    </span>
+                                </div>
+
+                                <div class="relative z-10 flex flex-col items-center justify-center my-auto text-center">
+                                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-brandGreen text-brandBlue rounded-full flex items-center justify-center border-3 border-brandBlue shadow-notebook transform group-hover:scale-110 transition duration-300 mb-3">
+                                        <i class="fa-solid fa-play text-2xl sm:text-3xl ml-1"></i>
+                                    </div>
+                                    <p class="text-white font-bold text-base sm:text-lg drop-shadow">Haz clic para ver cómo pasar del caos a la claridad</p>
+                                </div>
+
+                                <div class="relative z-10 flex items-center justify-between text-white/80 text-xs pt-4 border-t border-white/20">
+                                    <span><i class="fa-solid fa-volume-high text-brandGreen mr-2"></i> Activa tu sonido</span>
+                                    <span>Con Evlyn Meza</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero CTA Button -->
+                <div class="space-y-3">
+                    <a href="https://hotm.io/Q4DD6cT" target="_blank" rel="noopener" class="btn-pink-to-green inline-flex items-center justify-center gap-3 font-bold text-xl sm:text-2xl px-8 py-5 rounded-2xl border-3 border-brandBlue shadow-notebook hover:shadow-notebook-hover transform hover:-translate-y-1 transition-all duration-200 w-full sm:w-auto">
+                        <span>¡QUIERO ACCEDER AL CURSO AHORA!</span>
+                        <i class="fa-solid fa-arrow-right text-brandGreen"></i>
+                    </a>
+                    <p class="text-xs sm:text-sm font-semibold text-brandBlue/80">
+                        <i class="fa-solid fa-shield-halved text-brandPink mr-1"></i> Acceso inmediato • Fichas prácticas • Garantía de Hotmart
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-brandBlue">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="bg-brandPink text-white font-bold text-sm uppercase px-4 py-1.5 rounded-full border-2 border-brandBlue shadow-sm inline-block mb-3">
+                        ¿Te identificas con esto?
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brandBlue">
+                        Los obstáculos habituales al crear contenido <span class="text-brandPink underline decoration-brandGreen decoration-4">sin una dirección clara</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-paperBg p-6 rounded-2xl border-2 border-brandGreen shadow-notebook-green relative">
+                        <div class="w-10 h-10 bg-brandPink text-white font-bold rounded-full flex items-center justify-center text-lg mb-4 border border-brandPink">
+                            1
+                        </div>
+                        <h3 class="text-xl font-bold text-brandBlue mb-2">El Síndrome de la Hoja en Blanco</h3>
+                        <p class="text-brandBlue/80 text-sm leading-relaxed">
+                            Llega el día de publicar, y a pesar de tener ideas o guardados en redes, no sabes por dónde empezar a redactar o diseñar.
+                        </p>
+                    </div>
+
+                    <div class="bg-paperBg p-6 rounded-2xl border-2 border-brandGreen shadow-notebook-green relative">
+                        <div class="w-10 h-10 bg-brandPink text-white font-bold rounded-full flex items-center justify-center text-lg mb-4 border border-brandPink">
+                            2
+                        </div>
+                        <h3 class="text-xl font-bold text-brandBlue mb-2">Diseños Bonitos sin Estrategia</h3>
+                        <p class="text-brandBlue/80 text-sm leading-relaxed">
+                            Sabes crear diseños llamativos, pero sientes que tus publicaciones no transmiten la esencia real de tu negocio ni se ven profesionales.
+                        </p>
+                    </div>
+
+                    <div class="bg-paperBg p-6 rounded-2xl border-2 border-brandGreen shadow-notebook-green relative">
+                        <div class="w-10 h-10 bg-brandPink text-white font-bold rounded-full flex items-center justify-center text-lg mb-4 border border-brandPink">
+                            3
+                        </div>
+                        <h3 class="text-xl font-bold text-brandBlue mb-2">Falta de Temas Claros</h3>
+                        <p class="text-brandBlue/80 text-sm leading-relaxed">
+                            Un día hablas de una cosa y al siguiente de otra, confundiendo a tu audiencia porque no entienden exactamente qué vendes.
+                        </p>
+                    </div>
+
+                    <div class="bg-paperBg p-6 rounded-2xl border-2 border-brandGreen shadow-notebook-green relative">
+                        <div class="w-10 h-10 bg-brandPink text-white font-bold rounded-full flex items-center justify-center text-lg mb-4 border border-brandPink">
+                            4
+                        </div>
+                        <h3 class="text-xl font-bold text-brandBlue mb-2">Reinvención Semanal</h3>
+                        <p class="text-brandBlue/80 text-sm leading-relaxed">
+                            Tener que inventar contenido desde cero cada semana agota tu energía. Trabajas duro improvisando en vez de usar un sistema claro.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10 p-6 bg-brandPink rounded-2xl border-3 border-brandBlue text-center shadow-notebook">
+                    <p class="text-lg font-bold text-white">
+                        <i class="fa-solid fa-circle-info text-brandGreen mr-2"></i> La consecuencia real: 
+                        <span class="text-brandGreen font-bold">Inconsistencia, pérdida de tiempo y una marca que pasa desapercibida</span> en redes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-brandBlueLight bg-grid-pattern border-b-4 border-brandBlue">
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-white p-8 sm:p-12 rounded-3xl border-3 border-brandBlue shadow-notebook-pink relative">
+                    
+                    <div class="absolute -top-5 right-8 bg-brandGreen text-brandBlue font-bold text-xs sm:text-sm px-4 py-1.5 rounded-full border-2 border-brandBlue uppercase tracking-wider">
+                        El Método Paso a Paso
+                    </div>
+
+                    <div class="text-center max-w-3xl mx-auto mb-10">
+                        <p class="text-brandBlue text-2xl font-bold mb-1">Te presento:</p>
+                        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-bold text-brandPink uppercase tracking-tight">
+                            MARCA Y CREACIÓN DE CONTENIDO PARA EMPRENDEDORES
+                        </h2>
+                        <p class="text-lg text-brandBlue/80 font-bold mt-2">
+                            El Cuaderno de Trabajo Práctico para Construir tu Marca y Simplificar tu Contenido
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center p-5 rounded-2xl bg-paperBg border-2 border-brandBlue">
+                            <div class="w-14 h-14 bg-brandGreen text-brandBlue rounded-2xl flex items-center justify-center mx-auto mb-4 border-2 border-brandBlue text-2xl">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <h3 class="font-bold text-brandBlue text-lg mb-2">1. Claridad Estratégica</h3>
+                            <p class="text-xs sm:text-sm text-brandBlue/80">
+                                Defines tu propuesta de valor, público objetivo y posicionamiento único antes de publicar.
+                            </p>
+                        </div>
+
+                        <div class="text-center p-5 rounded-2xl bg-paperBg border-2 border-brandBlue">
+                            <div class="w-14 h-14 bg-brandPink text-white rounded-2xl flex items-center justify-center mx-auto mb-4 border-2 border-brandBlue text-2xl">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <h3 class="font-bold text-brandBlue text-lg mb-2">2. Criterio Visual</h3>
+                            <p class="text-xs sm:text-sm text-brandBlue/80">
+                                Seleccionas colores, tipografías y un sistema visual coherente sin complicarte.
+                            </p>
+                        </div>
+
+                        <div class="text-center p-5 rounded-2xl bg-paperBg border-2 border-brandBlue">
+                            <div class="w-14 h-14 bg-brandBlue text-brandGreen rounded-2xl flex items-center justify-center mx-auto mb-4 border-2 border-brandBlue text-2xl">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <h3 class="font-bold text-brandBlue text-lg mb-2">3. Plan de Contenido</h3>
+                            <p class="text-xs sm:text-sm text-brandBlue/80">
+                                Organizas tus pilares, generas ideas infinitas y armas un calendario claro y ejecutable.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t-2 border-brandBlue/20 flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+                        <div class="bg-brandGreen p-3 rounded-full border border-brandBlue text-brandBlue text-xl">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <p class="text-sm font-medium text-brandBlue">
+                            <strong>¿Qué lo hace diferente?</strong> Es un curso al grano de <strong>54 minutos y 16 segundos</strong> apoyado por fichas prácticas de trabajo diseñadas para rellenar mientras avanzas.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-brandBlue">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="bg-brandGreen text-brandBlue font-bold text-xs uppercase px-4 py-1.5 rounded-full border border-brandBlue inline-block mb-3">
+                        El Cambio de Perspectiva
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brandBlue">
+                        ¿Cómo cambia tu día a día con esta metodología?
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-brandPink/5 p-6 sm:p-8 rounded-3xl border-3 border-brandPink relative">
+                        <div class="inline-flex items-center gap-2 bg-brandPink text-white font-bold text-sm px-3 py-1 rounded-lg mb-6 border border-brandPink">
+                            <i class="fa-solid fa-xmark"></i> ANTES (Sin Estrategia)
+                        </div>
+                        <ul class="space-y-4 text-sm sm:text-base text-gray-700">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-xmark text-brandPink mt-1"></i>
+                                <span>Publicas por cumplir, sin saber si atraes al cliente correcto.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-xmark text-brandPink mt-1"></i>
+                                <span>Cambias constantemente de fuentes y colores generando confusión.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-xmark text-brandPink mt-1"></i>
+                                <span>Pierdes horas pensando qué publicar hoy y terminas sin subir nada.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-xmark text-brandPink mt-1"></i>
+                                <span>Copias tendencias que no conectan con la esencia de tu marca.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-brandBlueLight p-6 sm:p-8 rounded-3xl border-3 border-brandBlue shadow-notebook relative">
+                        <div class="inline-flex items-center gap-2 bg-brandGreen text-brandBlue font-bold text-sm px-3 py-1 rounded-lg mb-6 border border-brandBlue">
+                            <i class="fa-solid fa-check"></i> DESPUÉS (Con Marca y Creación de Contenido)
+                        </div>
+                        <ul class="space-y-4 text-sm sm:text-base text-brandBlue font-medium">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandPink mt-1"></i>
+                                <span>Sabes exactamente a quién le hablas y cuál es tu propuesta de valor.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandPink mt-1"></i>
+                                <span>Tienes un sistema visual definido con criterio que hace reconocible tu marca.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandPink mt-1"></i>
+                                <span>Cuentas con un calendario organizado y fichas listas para ejecutar.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-brandPink mt-1"></i>
+                                <span>Creas contenido con propósito humano, generando confianza real y ventas.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-paperBg bg-grid-pattern border-b-4 border-brandBlue">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="bg-brandPink text-white font-bold text-xs uppercase px-4 py-1.5 rounded-full border border-brandBlue inline-block mb-3">
+                        Paso a Paso
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brandBlue">
+                        El proceso de transformación de tu marca
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border-2 border-brandGreen shadow-notebook-green text-center flex flex-col items-center">
+                        <span class="w-12 h-12 rounded-full bg-brandPink text-white font-bold text-xl flex items-center justify-center mb-4">
+                            01
+                        </span>
+                        <h3 class="font-bold text-brandBlue text-base mb-2">Mira las Lecciones</h3>
+                        <p class="text-xs text-brandBlue/80 leading-relaxed">
+                            Accede a los 3 módulos en video (54 min en total) diseñados para ir directo a la práctica.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border-2 border-brandGreen shadow-notebook-green text-center flex flex-col items-center">
+                        <span class="w-12 h-12 rounded-full bg-brandPink text-white font-bold text-xl flex items-center justify-center mb-4">
+                            02
+                        </span>
+                        <h3 class="font-bold text-brandBlue text-base mb-2">Completa las Fichas</h3>
+                        <p class="text-xs text-brandBlue/80 leading-relaxed">
+                            Aplica los ejercicios prácticos en las plantillas descargables estilo cuaderno de apuntes.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border-2 border-brandGreen shadow-notebook-green text-center flex flex-col items-center">
+                        <span class="w-12 h-12 rounded-full bg-brandPink text-white font-bold text-xl flex items-center justify-center mb-4">
+                            03
+                        </span>
+                        <h3 class="font-bold text-brandBlue text-base mb-2">Arma tu Calendario</h3>
+                        <p class="text-xs text-brandBlue/80 leading-relaxed">
+                            Define tus pilares y multiplica 1 idea en múltiples publicaciones semanales sin estrés.
+                        </p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl border-2 border-brandGreen shadow-notebook-green text-center flex flex-col items-center">
+                        <span class="w-12 h-12 rounded-full bg-brandPink text-white font-bold text-xl flex items-center justify-center mb-4">
+                            04
+                        </span>
+                        <h3 class="font-bold text-brandBlue text-base mb-2">Publica con Claridad</h3>
+                        <p class="text-xs text-brandBlue/80 leading-relaxed">
+                            Comunica una marca sólida, profesional y consistente que conecta con tu cliente ideal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-brandBlue" id="temario">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="bg-brandGreen text-brandBlue font-extrabold text-xs uppercase px-4 py-1.5 rounded-full border border-brandBlue inline-block mb-3">
+                        Temario Completo
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlue">
+                        ¿Qué vas a aprender exactamente dentro del curso?
+                    </h2>
+                    <p class="text-brandBlue/80 text-sm sm:text-base mt-2 font-medium">
+                        54 minutos y 16 segundos de contenido directo al grano + Fichas prácticas rellenables
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+
+                    <!-- MÓDULO 1 -->
+                    <div class="bg-paperBg rounded-3xl border-3 border-brandBlue overflow-hidden shadow-notebook">
+                        <div class="bg-brandBlue p-5 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <div>
+                                <span class="bg-brandGreen text-brandBlue font-black text-xs px-2.5 py-1 rounded-md uppercase mr-2">MÓDULO 1</span>
+                                <h3 class="text-xl font-bold inline">Construye tu marca</h3>
+                            </div>
+                            <span class="bg-white/10 text-brandGreen text-xs px-3 py-1 rounded-full border border-brandGreen/30">
+                                <i class="fa-solid fa-file-pen mr-1"></i> Fichas de Trabajo Incluidas
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <ul class="grid md:grid-cols-2 gap-3 text-sm text-brandBlue font-medium">
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-play-circle text-brandPink text-base"></i>
+                                    <span><strong>Bienvenida</strong></span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-book-bookmark text-brandPink"></i>
+                                    <span><strong>Clase 1:</strong> ¿Qué es una marca y por qué importa?</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-book-bookmark text-brandPink"></i>
+                                    <span><strong>Clase 2:</strong> Encuentra tu público objetivo</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-book-bookmark text-brandPink"></i>
+                                    <span><strong>Clase 3:</strong> Define tu propuesta de valor</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-book-bookmark text-brandPink"></i>
+                                    <span><strong>Clase 4:</strong> Construye tu personalidad de marca</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-book-bookmark text-brandPink"></i>
+                                    <span><strong>Clase 5:</strong> Define tu posicionamiento</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- MÓDULO 2 -->
+                    <div class="bg-paperBg rounded-3xl border-3 border-brandBlue overflow-hidden shadow-notebook">
+                        <div class="bg-brandBlue p-5 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <div>
+                                <span class="bg-brandGreen text-brandBlue font-black text-xs px-2.5 py-1 rounded-md uppercase mr-2">MÓDULO 2</span>
+                                <h3 class="text-xl font-bold inline">Diseña una identidad profesional</h3>
+                            </div>
+                            <span class="bg-white/10 text-brandGreen text-xs px-3 py-1 rounded-full border border-brandGreen/30">
+                                <i class="fa-solid fa-file-pen mr-1"></i> Fichas de Trabajo Incluidas
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <ul class="grid md:grid-cols-2 gap-3 text-sm text-brandBlue font-medium">
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-palette text-brandPink"></i>
+                                    <span><strong>Clase 1:</strong> La identidad visual como herramienta estratégica</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-palette text-brandPink"></i>
+                                    <span><strong>Clase 2:</strong> El criterio para diseñar un logo</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-palette text-brandPink"></i>
+                                    <span><strong>Clase 3:</strong> Cómo elegir el estilo visual de tu marca</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-palette text-brandPink"></i>
+                                    <span><strong>Clase 4:</strong> Cómo elegir tus colores de marca</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-palette text-brandPink"></i>
+                                    <span><strong>Clase 5:</strong> Cómo elegir tus tipografías</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-palette text-brandPink"></i>
+                                    <span><strong>Clase 6:</strong> Construye un sistema visual</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- MÓDULO 3 -->
+                    <div class="bg-paperBg rounded-3xl border-3 border-brandBlue overflow-hidden shadow-notebook">
+                        <div class="bg-brandBlue p-5 text-white flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <div>
+                                <span class="bg-brandGreen text-brandBlue font-black text-xs px-2.5 py-1 rounded-md uppercase mr-2">MÓDULO 3</span>
+                                <h3 class="text-xl font-bold inline">Crea una estrategia de contenido</h3>
+                            </div>
+                            <span class="bg-white/10 text-brandGreen text-xs px-3 py-1 rounded-full border border-brandGreen/30">
+                                <i class="fa-solid fa-file-pen mr-1"></i> Fichas de Trabajo Incluidas
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <ul class="grid md:grid-cols-2 gap-3 text-sm text-brandBlue font-medium">
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-calendar-days text-brandPink"></i>
+                                    <span><strong>Clase 1:</strong> El contenido como herramienta de marca</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-calendar-days text-brandPink"></i>
+                                    <span><strong>Clase 2:</strong> Tipos de publicaciones</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-calendar-days text-brandPink"></i>
+                                    <span><strong>Clase 3:</strong> Pilares de contenido</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-calendar-days text-brandPink"></i>
+                                    <span><strong>Clase 4:</strong> Crea ideas infinitas</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-calendar-days text-brandPink"></i>
+                                    <span><strong>Clase 5:</strong> Calendario de contenido</span>
+                                </li>
+                                <li class="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-brandBlue/20">
+                                    <i class="fa-solid fa-flag-checkered text-brandPink"></i>
+                                    <span><strong>Recomendaciones finales</strong></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-brandBlueLight bg-grid-pattern border-b-4 border-brandBlue" id="precio-seccion">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-3xl border-4 border-brandGreen shadow-notebook-green p-6 sm:p-10 relative">
+                    
+                    <div class="text-center mb-8">
+                        <span class="bg-brandPink text-white font-black text-xs uppercase px-4 py-1.5 rounded-full border border-brandBlue inline-block mb-3">
+                            Oferta Especial de Lanzamiento
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlue">
+                            Invierte en la base de tu negocio hoy
+                        </h2>
+                        <p class="text-sm text-brandBlue/80 mt-1 font-medium">
+                            Acceso inmediato desde cualquier país
+                        </p>
+                    </div>
+
+                    <!-- Price Box: 25 EUR -->
+                    <div class="bg-paperBg rounded-2xl border-2 border-brandBlue p-6 text-center max-w-md mx-auto mb-8 relative">
+                        <div class="flex justify-center items-center gap-3">
+                            <span class="text-gray-400 line-through text-xl font-bold">67 €</span>
+                            <span class="text-4xl sm:text-5xl font-black text-brandPink">25 €</span>
+                        </div>
+                        <p class="text-xs text-brandBlue/80 mt-2 font-medium">
+                            Pago seguro en Hotmart en tu moneda local con tarjeta, PayPal o efectivo
+                        </p>
+                    </div>
+
+                    <!-- Deliverables Stack -->
+                    <div class="space-y-3 mb-8 max-w-xl mx-auto text-sm sm:text-base text-brandBlue font-medium">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle text-brandGreen text-lg"></i>
+                            <span>Curso completo en video (54 min 16 seg al grano)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle text-brandGreen text-lg"></i>
+                            <span><strong>Fichas Prácticas de Trabajo</strong> listas para rellenar</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle text-brandGreen text-lg"></i>
+                            <span>Acceso ilimitado y de por vida en la plataforma Hotmart</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-check-circle text-brandGreen text-lg"></i>
+                            <span>Los Bonos Exclusivos incluidos directamente en el curso</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="text-center space-y-3">
+                        <a href="https://hotm.io/Q4DD6cT" target="_blank" rel="noopener" class="btn-pink-to-green inline-flex items-center justify-center gap-3 font-black text-xl sm:text-2xl px-8 py-5 rounded-2xl border-3 border-brandBlue shadow-notebook hover:shadow-notebook-hover transform hover:-translate-y-1 transition-all duration-200 w-full sm:w-auto">
+                            <span>¡OBTENER MI ACCESO POR 25€!</span>
+                            <i class="fa-solid fa-lock text-brandGreen"></i>
+                        </a>
+                        <p class="text-xs text-brandBlue/70">
+                            <i class="fa-solid fa-credit-card mr-1"></i> Compra segura con garantía Hotmart
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-brandBlue">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="bg-brandPink text-white font-bold text-xs uppercase px-4 py-1.5 rounded-full border border-brandBlue inline-block mb-3">
+                        Regalos Incluidos
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlue">
+                        Llévate estos Bonos Exclusivos <span class="text-brandPink underline decoration-brandGreen decoration-4">Totalmente Gratis</span>
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+
+                    <!-- Bonus 1 -->
+                    <div class="bg-paperBg p-6 sm:p-8 rounded-3xl border-3 border-brandBlue shadow-notebook relative flex flex-col justify-between">
+                        <div>
+                            <span class="bg-brandGreen text-brandBlue font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-brandBlue inline-block mb-4 uppercase">
+                                BONO #1
+                            </span>
+                            <h3 class="text-xl font-bold text-brandBlue mb-3">Prompt de IA para Voz de Marca</h3>
+                            <p class="text-sm text-brandBlue/90 leading-relaxed mb-4 font-medium">
+                                Prompt de IA exclusivo diseñado para entrenar a ChatGPT y aplicar la voz y personalidad de tu marca en cada guion o publicación.
+                            </p>
+                            <p class="text-xs text-brandBlue font-bold mb-6 bg-brandBlue/10 p-2.5 rounded-lg border border-brandBlue/30">
+                                <i class="fa-solid fa-circle-info mr-1"></i> Incluido en la sección de agradecimientos al finalizar el curso.
+                            </p>
+                        </div>
+                        <div class="bg-brandPink text-white p-3 rounded-xl border border-brandPink text-center font-bold text-xs shadow-sm">
+                            INCLUIDO $0 CON TU COMPRA
+                        </div>
+                    </div>
+
+                    <!-- Bonus 2 -->
+                    <div class="bg-paperBg p-6 sm:p-8 rounded-3xl border-3 border-brandBlue shadow-notebook relative flex flex-col justify-between">
+                        <div>
+                            <span class="bg-brandGreen text-brandBlue font-extrabold text-xs px-3.5 py-1.5 rounded-full border border-brandBlue inline-block mb-4 uppercase">
+                                BONO #2
+                            </span>
+                            <h3 class="text-xl font-bold text-brandBlue mb-3">Comunidad Privada & Co-Creación</h3>
+                            <p class="text-sm text-brandBlue/90 leading-relaxed mb-6 font-medium">
+                                Comunidad Privada de WhatsApp + Espacio de Co-Creación donde puedes proponer temas para redes y compartir tus avances con otros creadores.
+                            </p>
+                        </div>
+                        <div class="bg-brandPink text-white p-3 rounded-xl border border-brandPink text-center font-bold text-xs shadow-sm">
+                            INCLUIDO $0 CON TU COMPRA
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-brandBlueLight bg-grid-pattern border-b-4 border-brandBlue">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-3xl border-3 border-brandPink shadow-notebook-pink p-6 sm:p-10 flex flex-col md:flex-row gap-8 items-center">
+                    
+                    <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl bg-brandPink border-3 border-brandPink shadow-notebook-green flex-shrink-0 relative overflow-hidden flex items-center justify-center">
+                        <img src="portada%20de%20highlights_2.jpg" alt="Evlyn Meza - Tu Instructora" class="w-full h-full object-cover object-center" id="instructor-img">
+                    </div>
+
+                    <div class="space-y-4">
+                        <span class="bg-brandGreen text-brandBlue font-extrabold text-xs uppercase px-3 py-1 rounded-full border border-brandBlue inline-block">
+                            Tu Instructora
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-black text-brandPink">
+                            Hola, soy Evlyn Meza
+                        </h2>
+                        <div class="text-xs sm:text-sm text-brandBlue/90 space-y-3 leading-relaxed">
+                            <p>
+                                Estudié <strong>Arte y Diseño Empresarial</strong> en la Universidad San Ignacio de Loyola (USIL) en Lima, Perú, donde me especialicé en gestión de marca y branding. Más adelante me mudé a España y continué mis estudios con un <strong>Grado Superior en Marketing y Publicidad</strong>.
+                            </p>
+                            <p>
+                                En el camino, me di cuenta de que mi enfoque de comunicación es <strong>principalmente humano</strong>. Para mí, una marca debe conectar genuinamente con las personas y entender sus necesidades antes de buscar vender algo.
+                            </p>
+                            <p>
+                                Creé este curso para darte una guía estructurada y práctica, para que no solo aprendas teoría, sino que salgas con tu marca lista para comunicar en el mundo real.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-brandBlue">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="bg-brandGreen text-brandBlue font-extrabold text-xs uppercase px-4 py-1.5 rounded-full border border-brandBlue inline-block mb-3">
+                        Experiencias Reales
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brandPink">
+                        Lo que opinan algunos creadores
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+
+                    <!-- Testimonial 1 -->
+                    <div class="bg-paperBg p-6 rounded-2xl border-2 border-brandBlue shadow-notebook flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 text-sm mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm text-brandBlue/90 italic mb-4 leading-relaxed font-medium">
+                                "Me gustó porque es como ver TikTok pero se entiende súper bien, además, con las fichas terminé de entender todo."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="bg-paperBg p-6 rounded-2xl border-2 border-brandBlue shadow-notebook flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 text-sm mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm text-brandBlue/90 italic mb-4 leading-relaxed font-medium">
+                                "Pensaba que sería mucho más difícil, pero con las fichas de trabajo por fin dejé de complicarme. Creo que ahora si contrataré a un diseñador."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="bg-paperBg p-6 rounded-2xl border-2 border-brandBlue shadow-notebook flex flex-col justify-between">
+                        <div>
+                            <div class="flex text-yellow-400 text-sm mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm text-brandBlue/90 italic mb-4 leading-relaxed font-medium">
+                                "Me encantó cómo explica, lo hace tan sencillo de entender!"
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-paperBg bg-grid-pattern border-b-4 border-brandBlue">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-10">
+                    <span class="bg-brandPink text-white font-bold text-xs uppercase px-4 py-1.5 rounded-full border border-brandBlue inline-block mb-3">
+                        Ejemplo Práctico
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlue">
+                        Echa un vistazo a cómo funciona una Ficha de Trabajo
+                    </h2>
+                    <p class="text-xs sm:text-sm text-brandBlue/80 mt-1">
+                        Ejemplo del cuaderno de trabajo práctico incluido en el curso
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl border-3 border-brandBlue shadow-notebook p-6 sm:p-8 relative">
+                    <div class="flex items-center justify-between border-b-2 border-brandBlue pb-4 mb-6">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-pen-ruler text-brandPink text-xl"></i>
+                            <span class="font-bold text-sm sm:text-base text-brandBlue">FICHA DE TRABAJO #03 - MÓDULO 1: PROPUESTA DE VALOR</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-brandBlue uppercase mb-1">1. ¿Qué problema principal resuelves para tu cliente?</label>
+                            <input type="text" readonly value="Ayudo a emprendedores y marcas a estructurar su comunicación sin perder horas improvisando." class="w-full bg-paperBg p-3 rounded-xl border border-brandBlue/30 text-xs sm:text-sm text-brandPink font-bold">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-brandBlue uppercase mb-1">2. ¿Cuál es tu factor de diferenciación humana?</label>
+                            <input type="text" readonly value="Enfoco la estrategia desde la autenticidad de la marca, sin trucos ni plantillas genéricas." class="w-full bg-paperBg p-3 rounded-xl border border-brandBlue/30 text-xs sm:text-sm text-brandPink font-bold">
+                        </div>
+
+                        <div class="p-4 bg-brandBlueLight rounded-xl border border-brandBlue/30 text-center">
+                            <p class="text-xs text-brandBlue font-bold">
+                                <i class="fa-solid fa-sparkles text-brandPink mr-1"></i> Resultado obtenido: Tu declaración de posicionamiento lista para aplicar a tu contenido diario.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-brandBlue">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="bg-brandPink text-white font-extrabold text-xs uppercase px-4 py-1.5 rounded-full border-2 border-brandBlue inline-block mb-3 shadow-sm">
+                        Claridad Absoluta
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brandBlue">
+                        ¿Este curso es ideal para ti?
+                    </h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- SÍ ES PARA TI -->
+                    <div class="bg-paperBg p-6 sm:p-8 rounded-3xl border-3 border-brandGreen shadow-notebook-green">
+                        <h3 class="text-xl font-bold text-brandBlue mb-6 flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-full bg-brandGreen text-brandBlue flex items-center justify-center font-black text-sm border border-brandBlue">✓</span>
+                            SÍ es para ti si:
+                        </h3>
+                        <ul class="space-y-4 text-xs sm:text-sm text-brandBlue/90">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-brandGreen mt-1 text-base"></i>
+                                <span>Eres emprendedor, profesional independiente o creador y vendes servicios o productos.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-brandGreen mt-1 text-base"></i>
+                                <span>Sientes que publicas contenido pero de forma desordenada y sin un hilo conductor.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-brandGreen mt-1 text-base"></i>
+                                <span>Quieres aprender la lógica de marca sin complicaciones técnicas ni jerga compleja.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-check text-brandGreen mt-1 text-base"></i>
+                                <span>Valoras tener fichas paso a paso para ejecutar mientras aprendes.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- NO ES PARA TI -->
+                    <div class="bg-gray-50 p-6 sm:p-8 rounded-3xl border-3 border-brandBlue shadow-notebook">
+                        <h3 class="text-xl font-bold text-brandBlue mb-6 flex items-center gap-2">
+                            <span class="w-8 h-8 rounded-full bg-brandBlue text-white flex items-center justify-center font-black text-sm">✕</span>
+                            NO es para ti si:
+                        </h3>
+                        <ul class="space-y-4 text-xs sm:text-sm text-gray-600">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-xmark text-brandPink mt-1 text-base"></i>
+                                <span>Buscas trucos mágicos de viralidad inmediata o atajos para ganar seguidores falsos.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-xmark text-brandPink mt-1 text-base"></i>
+                                <span>Buscas un curso técnico avanzado de Photoshop o Illustrator (aquí enseñamos criterio y estrategia).</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-xmark text-brandPink mt-1 text-base"></i>
+                                <span>No estás dispuesto a dedicar 54 minutos a aprender y llenar tus fichas de trabajo.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-brandBlueLight bg-grid-pattern border-b-4 border-brandBlue">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="bg-brandPink text-white font-bold text-xs uppercase px-4 py-1.5 rounded-full border border-brandBlue inline-block mb-3">
+                        Resolvemos tus dudas
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-brandBlue">
+                        Preguntas Frecuentes
+                    </h2>
+                </div>
+
+                <div class="space-y-4" id="faq-accordion">
+
+                    <div class="bg-white rounded-2xl border-2 border-brandGreen shadow-notebook-green overflow-hidden">
+                        <button class="w-full p-5 text-left font-bold text-brandBlue flex justify-between items-center text-sm sm:text-base faq-btn" onclick="toggleFaq(this)">
+                            <span class="text-brandPink">¿Necesito saber de diseño o marketing para tomar el curso?</span>
+                            <i class="fa-solid fa-chevron-down text-brandPink transition-transform duration-200"></i>
+                        </button>
+                        <div class="px-5 pb-5 hidden text-xs sm:text-sm text-brandBlue/80 border-t border-brandBlue/10 pt-3">
+                            ¡Para nada! El curso está pensado desde cero para emprendedores que no tienen conocimientos previos en branding o diseño. Todo se explica con lenguaje sencillo y práctico.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border-2 border-brandGreen shadow-notebook-green overflow-hidden">
+                        <button class="w-full p-5 text-left font-bold text-brandBlue flex justify-between items-center text-sm sm:text-base faq-btn" onclick="toggleFaq(this)">
+                            <span class="text-brandPink">¿Cuánto tiempo me tomará completar el curso?</span>
+                            <i class="fa-solid fa-chevron-down text-brandPink transition-transform duration-200"></i>
+                        </button>
+                        <div class="px-5 pb-5 hidden text-xs sm:text-sm text-brandBlue/80 border-t border-brandBlue/10 pt-3">
+                            Las lecciones en video duran exactamente <strong>54 minutos y 16 segundos</strong> en total. Está diseñado para que puedas verlo y llenar tus fichas de trabajo a tu propio ritmo sin perder tiempo.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border-2 border-brandGreen shadow-notebook-green overflow-hidden">
+                        <button class="w-full p-5 text-left font-bold text-brandBlue flex justify-between items-center text-sm sm:text-base faq-btn" onclick="toggleFaq(this)">
+                            <span class="text-brandPink">¿Cómo recibo el curso y los materiales?</span>
+                            <i class="fa-solid fa-chevron-down text-brandPink transition-transform duration-200"></i>
+                        </button>
+                        <div class="px-5 pb-5 hidden text-xs sm:text-sm text-brandBlue/80 border-t border-brandBlue/10 pt-3">
+                            Recibes el acceso al curso inmediatamente a través de la plataforma de <strong>Hotmart</strong>. Una vez confirmado tu pago, recibirás un correo electrónico de Hotmart con tus datos de acceso a las lecciones en video y la descarga de las fichas de trabajo y bonos.
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border-2 border-brandGreen shadow-notebook-green overflow-hidden">
+                        <button class="w-full p-5 text-left font-bold text-brandBlue flex justify-between items-center text-sm sm:text-base faq-btn" onclick="toggleFaq(this)">
+                            <span class="text-brandPink">¿Puedo pagar si estoy en Latinoamérica o España?</span>
+                            <i class="fa-solid fa-chevron-down text-brandPink transition-transform duration-200"></i>
+                        </button>
+                        <div class="px-5 pb-5 hidden text-xs sm:text-sm text-brandBlue/80 border-t border-brandBlue/10 pt-3">
+                            ¡Sí! Hotmart procesa pagos internacionales adaptando la moneda automáticamente a tu país local (Euros, Dólares, Pesos, Soles, etc.) mediante tarjeta, PayPal o métodos de pago locales.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white border-b-4 border-brandBlue">
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                
+                <span class="bg-brandGreen text-brandBlue font-black text-xs uppercase px-4 py-2 rounded-full border border-brandBlue inline-block">
+                    TU MARCA MERECE CLARIDAD
+                </span>
+
+                <h2 class="text-3xl sm:text-5xl font-black text-brandBlue leading-tight">
+                    Haz que cada publicación valga la pena y construya el futuro de tu negocio
+                </h2>
+
+                <p class="text-base sm:text-lg text-brandBlue/80 max-w-2xl mx-auto font-medium">
+                    No sigas improvisando semana a semana. Da el paso hoy y obtén la estructura estratégica y visual que transformará tu comunicación.
+                </p>
+
+                <div class="bg-paperBg p-6 rounded-3xl border-3 border-brandBlue shadow-notebook max-w-lg mx-auto space-y-4">
+                    <div class="flex justify-center items-center gap-3">
+                        <span class="text-gray-400 line-through text-lg font-bold">67 €</span>
+                        <span class="text-4xl font-black text-brandPink">25 €</span>
+                        <span class="bg-brandGreen text-brandBlue text-xs font-black px-2 py-1 rounded border border-brandBlue">HOY</span>
+                    </div>
+
+                    <a href="https://hotm.io/Q4DD6cT" target="_blank" rel="noopener" class="btn-pink-to-green inline-flex items-center justify-center gap-3 font-black text-xl px-8 py-5 rounded-2xl border-3 border-brandBlue shadow-notebook-green hover:shadow-notebook-hover transform hover:-translate-y-1 transition-all w-full">
+                        <span>¡QUIERO EMPEZAR MI CURSO AHORA!</span>
+                        <i class="fa-solid fa-arrow-right text-brandGreen"></i>
+                    </a>
+
+                    <p class="text-xs text-brandBlue/70 font-semibold">
+                        <i class="fa-solid fa-check text-brandGreen mr-1"></i> Garantía Hotmart • Acceso ilimitado • Bonos incluidos
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="bg-brandBlue text-white/80 py-8 px-4 text-center text-xs">
+            <div class="max-w-4xl mx-auto space-y-2">
+                <p class="font-bold text-white text-sm">Evlyn Meza — Marca y creación de contenido para emprendedores</p>
+                <p>© 2026 Evlyn Meza. Todos los derechos reservados.</p>
+                <p class="text-white/50 text-[10px]">Este sitio no es parte del sitio web de Facebook ni de Meta Platforms Inc.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        function startCountdown() {
+            let duration = 15 * 60;
+            const display = document.getElementById('countdown-timer');
+            const timerBar = document.getElementById('sticky-timer-bar');
+            
+            const timerInterval = setInterval(() => {
+                let minutes = parseInt(duration / 60, 10);
+                let seconds = parseInt(duration % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                if (display) {
+                    display.textContent = minutes + ":" + seconds;
+                }
+
+                if (--duration < 0) {
+                    clearInterval(timerInterval);
+                    if (timerBar) {
+                        timerBar.innerHTML = `
+                            <div class="max-w-6xl mx-auto flex items-center justify-center gap-2 text-center py-0.5">
+                                <span class="uppercase tracking-wider font-extrabold text-brandGreen text-base sm:text-lg flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-exclamation text-white"></i> ¡OFERTA TERMINADA!
+                                </span>
+                            </div>
+                        `;
+                    }
+                }
+            }, 1000);
+        }
