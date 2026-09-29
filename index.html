@@ -100,9 +100,9 @@
                 <div class="relative max-w-3xl mx-auto mb-10">
                     <div class="bg-white p-3 sm:p-4 rounded-3xl border-3 border-brandBlue shadow-notebook-pink">
                         <div class="relative aspect-video bg-brandBlue rounded-2xl overflow-hidden border-2 border-brandBlue group" id="vsl-player">
-                            <!-- HTML5 Video element pointing to ../resources/VSL.mp4 -->
+                            <!-- HTML5 Video element pointing to resources/vsl.mp4 -->
                             <video id="vsl-video" class="w-full h-full object-cover rounded-2xl" controls preload="metadata">
-                                <source src="../resources/VSL.mp4" type="video/mp4">
+                                <source src="resources/vsl.mp4" type="video/mp4">
                                 Tu navegador no soporta la reproducción de este video.
                             </video>
                             
@@ -970,3 +970,32 @@
                 }
             }, 1000);
         }
+
+        function playVslVideo() {
+            const video = document.getElementById('vsl-video');
+            const overlay = document.getElementById('vsl-overlay');
+            if (video && overlay) {
+                overlay.style.display = 'none';
+                video.play();
+            }
+        }
+
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        window.onload = function() {
+            startCountdown();
+        };
+    </script>
+</body>
+</html>
