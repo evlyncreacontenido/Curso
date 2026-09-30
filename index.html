@@ -100,34 +100,11 @@
                 <div class="relative max-w-3xl mx-auto mb-10">
                     <div class="bg-white p-3 sm:p-4 rounded-3xl border-3 border-brandBlue shadow-notebook-pink">
                         <div class="relative aspect-video bg-brandBlue rounded-2xl overflow-hidden border-2 border-brandBlue group" id="vsl-player">
-                            <!-- HTML5 Video element pointing to resources/vsl.mp4 -->
-                            <video id="vsl-video" class="w-full h-full object-cover rounded-2xl" controls preload="metadata">
+                            <!-- HTML5 Video element with autoplay -->
+                            <video autoplay muted controls id="vsl-video" class="w-full h-full object-cover rounded-2xl" preload="metadata">
                                 <source src="resources/vsl.mp4" type="video/mp4">
                                 Tu navegador no soporta la reproducción de este video.
                             </video>
-                            
-                            <!-- Custom interactive overlay cover -->
-                            <div id="vsl-overlay" class="absolute inset-0 bg-brandBlue bg-opacity-90 flex flex-col justify-between p-6 text-left cursor-pointer transition-opacity duration-300 z-10" onclick="playVslVideo()">
-                                <div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" style="background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80');"></div>
-                                
-                                <div class="relative z-10 flex justify-end items-start">
-                                    <span class="bg-brandGreen text-brandBlue font-bold text-xs px-2.5 py-1 rounded-full border border-brandBlue">
-                                        HD 1080p
-                                    </span>
-                                </div>
-
-                                <div class="relative z-10 flex flex-col items-center justify-center my-auto text-center">
-                                    <div class="w-16 h-16 sm:w-20 sm:h-20 bg-brandGreen text-brandBlue rounded-full flex items-center justify-center border-3 border-brandBlue shadow-notebook transform group-hover:scale-110 transition duration-300 mb-3">
-                                        <i class="fa-solid fa-play text-2xl sm:text-3xl ml-1"></i>
-                                    </div>
-                                    <p class="text-white font-bold text-base sm:text-lg drop-shadow">Haz clic para ver cómo pasar del caos a la claridad</p>
-                                </div>
-
-                                <div class="relative z-10 flex items-center justify-between text-white/80 text-xs pt-4 border-t border-white/20">
-                                    <span><i class="fa-solid fa-volume-high text-brandGreen mr-2"></i> Activa tu sonido</span>
-                                    <span>Con Evlyn Meza</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -372,7 +349,7 @@
                         </span>
                         <h3 class="font-bold text-brandBlue text-base mb-2">Arma tu Calendario</h3>
                         <p class="text-xs text-brandBlue/80 leading-relaxed">
-                            Define tus pilares y multiplica 1 idea en múltiples publicaciones semanales sin estrés.
+                            Define tus pilares y multiplica 1 idea en múltiples publicaciones semanales sin complicarte.
                         </p>
                     </div>
 
@@ -650,8 +627,8 @@
             <div class="max-w-4xl mx-auto">
                 <div class="bg-white rounded-3xl border-3 border-brandPink shadow-notebook-pink p-6 sm:p-10 flex flex-col md:flex-row gap-8 items-center">
                     
-                    <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl bg-brandPink border-3 border-brandPink shadow-notebook-green flex-shrink-0 relative overflow-hidden flex items-center justify-center">
-                        <img src="portada%20de%20highlights_2.jpg" alt="Evlyn Meza - Tu Instructora" class="w-full h-full object-cover object-center" id="instructor-img">
+                    <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl bg-brandPink border-3 border-brandPink flex-shrink-0 relative overflow-hidden flex items-center justify-center" >
+                        <img src="resources/portrait.png" alt="Evlyn Meza - Tu Instructora" class="w-full h-full object-cover object-center" id="instructor-img">
                     </div>
 
                     <div class="space-y-4">
@@ -794,19 +771,19 @@
                         </h3>
                         <ul class="space-y-4 text-xs sm:text-sm text-brandBlue/90">
                             <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-brandGreen mt-1 text-base"></i>
+                                <i class="fa-solid fa-check text-brandPink mt-1 text-base"></i>
                                 <span>Eres emprendedor, profesional independiente o creador y vendes servicios o productos.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-brandGreen mt-1 text-base"></i>
+                                <i class="fa-solid fa-check text-brandPink mt-1 text-base"></i>
                                 <span>Sientes que publicas contenido pero de forma desordenada y sin un hilo conductor.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-brandGreen mt-1 text-base"></i>
+                                <i class="fa-solid fa-check text-brandPink mt-1 text-base"></i>
                                 <span>Quieres aprender la lógica de marca sin complicaciones técnicas ni jerga compleja.</span>
                             </li>
                             <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-check text-brandGreen mt-1 text-base"></i>
+                                <i class="fa-solid fa-check text-brandPink mt-1 text-base"></i>
                                 <span>Valoras tener fichas paso a paso para ejecutar mientras aprendes.</span>
                             </li>
                         </ul>
@@ -866,7 +843,7 @@
                             <i class="fa-solid fa-chevron-down text-brandPink transition-transform duration-200"></i>
                         </button>
                         <div class="px-5 pb-5 hidden text-xs sm:text-sm text-brandBlue/80 border-t border-brandBlue/10 pt-3">
-                            Las lecciones en video duran exactamente <strong>54 minutos y 16 segundos</strong> en total. Está diseñado para que puedas verlo y llenar tus fichas de trabajo a tu propio ritmo sin perder tiempo.
+                            Las lecciones en video duran exactamente <strong>54 minutos y 16 segundos</strong> en total. Está diseñado para que puedas verlo y llenar tus fichas de trabajo a tu propio ritmo sin complicarte.
                         </div>
                     </div>
 
@@ -969,15 +946,6 @@
                     }
                 }
             }, 1000);
-        }
-
-        function playVslVideo() {
-            const video = document.getElementById('vsl-video');
-            const overlay = document.getElementById('vsl-overlay');
-            if (video && overlay) {
-                overlay.style.display = 'none';
-                video.play();
-            }
         }
 
         function toggleFaq(button) {
